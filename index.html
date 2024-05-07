@@ -41,7 +41,9 @@ p {
 }
 
 #displayName {
-text-align: center;
+    text-align: center;
+    font-size: 24px;
+    color: #333;
 }
 
 #pictureUrl {
@@ -86,14 +88,6 @@ text-align: center;
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
 
-async function getUserProfile() {
-      const profile = await liff.getProfile()
-      document.getElementById("pictureUrl").src = profile.pictureUrl
-      document.getElementById("userId").append(profile.userId)
-      document.getElementById("statusMessage").append(profile.statusMessage)
-      document.getElementById("displayName").append(profile.displayName)
-     
-    }
 
 
 async function buddhistHolyDay() {
@@ -449,10 +443,25 @@ async function greatSunday() {
       liff.logout()
       window.location.reload()
     }
+
+    
+async function getUserProfile() {
+      const profile = await liff.getProfile()
+      document.getElementById("pictureUrl").src = profile.pictureUrl
+      document.getElementById("displayName").append(profile.displayName)
+     
+    }
+
     async function main() {
       await liff.init({ liffId: "2004865884-13O5ELrb" })
       if (liff.isLoggedIn()) {
         getUserProfile()
+
+
+
+
+
+        
         document.getElementById("btnBuddhistHolyDay").style.display = "block"
         document.getElementById("btnGreatSunday").style.display = "block"
         document.getElementById("btnGreatMonday").style.display = "block"
