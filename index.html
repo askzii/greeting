@@ -4,10 +4,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
-  <title>My LIFF App</title>
+  <title>Greeting Message for Friend : คำทักทายสำหรับเพื่อน </title>
   <style>
-    body { padding: 256px }
-    button { display: none; width: 50%; padding: 16px 0; margin: 16px auto }
+    /* Common styles for both desktop and mobile */
+button {
+    width: 50%;
+    padding: 16px 0;
+    margin: 16px auto;
+}
+
+/* Styles for desktop */
+@media (min-width: 768px) {
+    body {
+        padding: 256px;
+    }
+    button {
+        display: none; /* Hide buttons on desktop */
+    }
+}
+
+/* Styles for mobile */
+@media (max-width: 767px) {
+    body {
+        padding: 16px; /* Adjust padding for mobile */
+    }
+    button {
+        display: block; /* Show buttons on mobile */
+    }
+}
+
   </style>
 </head>
 <body>
