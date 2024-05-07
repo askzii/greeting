@@ -36,6 +36,12 @@ button {
   </style>
 </head>
 <body>
+
+    <img id="pictureUrl">
+    <p id="userId"><b>userId:</b> </p>
+    <p id="displayName"><b>displayName:</b> </p>
+
+
   <button id="btnBuddhistHolyDay" onclick="buddhistHolyDay()"> สวัสดีวันพระ</button>
   <button id="btnGreatSunday" onclick="greatSunday()">ทักทาย วันอาทิตย์</button>
   <button id="btnGreatMonday" onclick="greatMonday()">ทักทาย วันจันทร์</button>
@@ -51,6 +57,15 @@ button {
   <button id="btnLogOut" onclick="logOut()">ออกจากระบบ</button>
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
+
+async function getUserProfile() {
+      const profile = await liff.getProfile()
+      document.getElementById("pictureUrl").src = profile.pictureUrl
+      document.getElementById("userId").append(profile.userId)
+      document.getElementById("statusMessage").append(profile.statusMessage)
+      document.getElementById("displayName").append(profile.displayName)
+     
+    }
 
 
 async function buddhistHolyDay() {
@@ -409,6 +424,7 @@ async function greatSunday() {
     async function main() {
       await liff.init({ liffId: "2004865884-13O5ELrb" })
       if (liff.isLoggedIn()) {
+        getUserProfile()
         document.getElementById("btnBuddhistHolyDay").style.display = "block"
         document.getElementById("btnGreatSunday").style.display = "block"
         document.getElementById("btnGreatMonday").style.display = "block"
