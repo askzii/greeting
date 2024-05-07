@@ -16,9 +16,9 @@
   <button id="btnGreatMonday" onclick="greatMonday()">ทักทาย วันจันทร์</button>
   <button id="btnGreatTuesday" onclick="greatTuesday()">ทักทาย วันอังคาร</button>
   <button id="btnGreatWednesday" onclick="greatWednesday()">ทักทาย วันพุธ</button>
-  <button id="btnShare" onclick="greatThursday()">ทักทาย วันพฤหัส</button>
-  <button id="btnShare" onclick="greatFriday()">ทักทาย วันศุกร์</button>
-  <button id="btnShare" onclick="greatSaturday()">ทักทาย วันเสาร์</button>
+  <button id="btnGreatThursday" onclick="greatThursday()">ทักทาย วันพฤหัส</button>
+  <button id="btnGreatFriday" onclick="greatFriday()">ทักทาย วันศุกร์</button>
+  <button id="btnGreatSaturday" onclick="greatSaturday()">ทักทาย วันเสาร์</button>
   <button id="btnShare" onclick="sendShare()">Share Target Picker</button>
   
 
@@ -382,8 +382,16 @@ async function greatSunday() {
       window.location.reload()
     }
     async function main() {
-      await liff.init({ liffId: "YOUR-LIFF-ID" })
+      await liff.init({ liffId: "2004865884-13O5ELrb" })
       if (liff.isLoggedIn()) {
+        document.getElementById("btnBuddhistHolyDay").style.display = "block"
+        document.getElementById("btnGreatSunday").style.display = "block"
+        document.getElementById("btnGreatMonday").style.display = "block"
+        document.getElementById("btnGreatTuesday").style.display = "block"
+        document.getElementById("btnGreatWednesday").style.display = "block"
+        document.getElementById("btnGreatThursday").style.display = "block"
+        document.getElementById("btnGreatFriday").style.display = "block"
+        document.getElementById("btnGreatSaturday").style.display = "block"
         document.getElementById("btnShare").style.display = "block"
         if (!liff.isInClient()) {
           document.getElementById("btnLogOut").style.display = "block"
