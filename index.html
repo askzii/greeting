@@ -201,7 +201,36 @@ async function greatSunday() {
         {
           "type": "flex",
           "altText": "Flex Message",
-          "contents": {}
+          "contents": {
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "https://askzii.github.io/greeting/img/wednesday/wed-02.jpg",
+    "size": "full",
+    "action": {
+      "type": "uri",
+      "uri": "https://line.me/"
+    },
+    "aspectMode": "cover",
+    "position": "relative"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "md",
+    "contents": [
+      {
+        "type": "text",
+        "text": "สวัสดีวันพุธ มีความสุข สดใส",
+        "wrap": true,
+        "weight": "bold",
+        "gravity": "center",
+        "size": "xl",
+        "align": "center"
+      }
+    ]
+  }
+}
 
 
 
@@ -446,9 +475,7 @@ async function getUserProfile() {
       await liff.init({ liffId: "2004865884-13O5ELrb" })
       if (liff.isLoggedIn()) {
         getUserProfile()
-        document.getElementById("btnShare").style.display = "block"
-
-
+     
 const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
 const d = new Date();
