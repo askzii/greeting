@@ -64,6 +64,8 @@ button {
 <body>
 
     <img id="pictureUrl">
+    
+    <p id="displayDay"> </p>
     <p id="displayName"><b>สวัสดีคุณ :</b> </p>
 
 
@@ -120,10 +122,6 @@ async function greatSunday() {
           "type": "flex",
           "altText": "Flex Message",
           "contents": {}
-
-
-
-
         }
       ])
       if (result) {
@@ -312,8 +310,6 @@ async function greatSunday() {
  }
  
 
- 
-
     async function sendShare() {
       const result = await liff.shareTargetPicker([
         {
@@ -432,7 +428,6 @@ async function greatSunday() {
     }
 
 
-
     
     function logOut() {
       liff.logout()
@@ -444,28 +439,39 @@ async function getUserProfile() {
       const profile = await liff.getProfile()
       document.getElementById("pictureUrl").src = profile.pictureUrl
       document.getElementById("displayName").append(profile.displayName)
-     
     }
+
 
     async function main() {
       await liff.init({ liffId: "2004865884-13O5ELrb" })
       if (liff.isLoggedIn()) {
         getUserProfile()
+        document.getElementById("btnShare").style.display = "block"
+
+
+const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+const d = new Date();
+let day = weekday[d.getDay()];
+document.getElementById("displayDay").innerHTML = day;
+
+
+      document.getElementById("btnBuddhistHolyDay").style.display = "block"
+      document.getElementById("btnGreatSunday").style.display = "block"
+      document.getElementById("btnGreatMonday").style.display = "block"
+      document.getElementById("btnGreatTuesday").style.display = "block"
+      document.getElementById("btnGreatWednesday").style.display = "block"
+      document.getElementById("btnGreatThursday").style.display = "block"
+      document.getElementById("btnGreatFriday").style.display = "block"
+      document.getElementById("btnGreatSaturday").style.display = "block"
+
+
 
 
 
 
 
         
-        document.getElementById("btnBuddhistHolyDay").style.display = "block"
-        document.getElementById("btnGreatSunday").style.display = "block"
-        document.getElementById("btnGreatMonday").style.display = "block"
-        document.getElementById("btnGreatTuesday").style.display = "block"
-        document.getElementById("btnGreatWednesday").style.display = "block"
-        document.getElementById("btnGreatThursday").style.display = "block"
-        document.getElementById("btnGreatFriday").style.display = "block"
-        document.getElementById("btnGreatSaturday").style.display = "block"
-        document.getElementById("btnShare").style.display = "block"
         if (!liff.isInClient()) {
           document.getElementById("btnLogOut").style.display = "block"
         }
