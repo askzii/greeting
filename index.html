@@ -29,7 +29,7 @@ button {
         padding: 16px; /* Adjust padding for mobile */
     }
     button {
-        display: block; /* Show buttons on mobile */
+        display: none; /* Show buttons on mobile */
     }
 }
 
@@ -455,22 +455,36 @@ const d = new Date();
 let day = weekday[d.getDay()];
 document.getElementById("displayDay").innerHTML = day;
 
+if(day == 'Sunday') {
+  document.getElementById("btnGreatSunday").style.display = "block"
+} else if(day == 'Monday'){
+  document.getElementById("btnGreatMonday").style.display = "block"
+} else if (day == 'Tuesday'){
+  document.getElementById("btnGreatTuesday").style.display = "block"
+}
 
-      document.getElementById("btnBuddhistHolyDay").style.display = "block"
-      document.getElementById("btnGreatSunday").style.display = "block"
-      document.getElementById("btnGreatMonday").style.display = "block"
-      document.getElementById("btnGreatTuesday").style.display = "block"
-      document.getElementById("btnGreatWednesday").style.display = "block"
-      document.getElementById("btnGreatThursday").style.display = "block"
-      document.getElementById("btnGreatFriday").style.display = "block"
-      document.getElementById("btnGreatSaturday").style.display = "block"
-
-
-
-
-
-
-
+else if(day == 'Wednesday'){
+  document.getElementById("btnGreatWednesday").style.display = "block"
+} 
+else if(day == 'Thursday'){
+  document.getElementById("btnGreatThursday").style.display = "block"
+}  
+else if (day == 'Friday') {
+  document.getElementById("btnGreatFriday").style.display = "block"
+}
+else if (day == 'Saturday') {
+  document.getElementById("btnGreatSaturday").style.display = "block"
+}
+ 
+    
+document.getElementById("btnBuddhistHolyDay").style.display = "block"
+      
+      
+      
+      
+     
+     
+  
         
         if (!liff.isInClient()) {
           document.getElementById("btnLogOut").style.display = "block"
