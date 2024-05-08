@@ -455,6 +455,17 @@ const d = new Date();
 let day = weekday[d.getDay()];
 document.getElementById("displayDay").innerHTML = day;
 
+
+const buttonId = "btnGreat" + day;
+const button = document.getElementById(buttonId);
+if (button) {
+  button.style.display = "block";
+}
+
+
+
+
+
 if(day == 'Sunday') {
   document.getElementById("btnGreatSunday").style.display = "block"
 } else if(day == 'Monday'){
