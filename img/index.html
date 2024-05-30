@@ -1,0 +1,1326 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
+  <title>GreetingMessageforFriend : คำทักทายสำหรับเพื่อน </title>
+  <style>
+    /* Common styles for both desktop and mobile */
+button {
+    width: 50%;
+    padding: 16px 0;
+    margin: 16px auto;
+}
+
+/* Styles for desktop */
+@media (min-width: 768px) {
+    body {
+        padding: 256px;
+    }
+    button {
+        display: none; /* Hide buttons on desktop */
+    }
+}
+
+/* Styles for mobile */
+@media (max-width: 767px) {
+    body {
+        padding: 16px; /* Adjust padding for mobile */
+    }
+    button {
+        display: none; /* Show buttons on mobile */
+    }
+}
+
+
+
+#displayName {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+}
+
+#pictureUrl {
+  display: block;
+  margin: 0 auto;
+  width: 12%;
+  display: -moz-box;
+  display: -webkit-box;
+  display: box;
+  -moz-box-pack: center;
+  -moz-box-align: center;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  box-pack: center;
+  box-align: center;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+}
+
+  </style>
+</head>
+<body>
+
+    <img id="pictureUrl">
+    <p id="displayName"><b>สวัสดีคุณ :</b> </p>
+  <button id="btnBuddhistHolyDay" onclick="buddhistHolyDay()"> สวัสดีวันพระ</button>
+  <button id="btnGreatSunday" onclick="greatSunday()">ทักทาย วันอาทิตย์</button>
+  <button id="btnGreatMonday" onclick="greatMonday()">ทักทาย วันจันทร์</button>
+  <button id="btnGreatTuesday" onclick="greatTuesday()">ทักทาย วันอังคาร</button>
+  <button id="btnGreatWednesday" onclick="greatWednesday()">ทักทาย วันพุธ</button>
+  <button id="btnGreatThursday" onclick="greatThursday()">ทักทาย วันพฤหัส</button>
+  <button id="btnGreatFriday" onclick="greatFriday()">ทักทาย วันศุกร์</button>
+  <button id="btnGreatSaturday" onclick="greatSaturday()">ทักทาย วันเสาร์</button>
+  
+  
+  <button id="btnLogin" onclick="liff.login()">เข้าใช้งาน</button>
+  <button id="btnLogOut" onclick="logOut()">ออกจากระบบ</button>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <script>
+
+
+
+async function buddhistHolyDay() {
+    const result = await liff.shareTargetPicker([
+        {
+          "type": "flex",
+          "altText": "Flex Message",
+          "contents": {}
+
+
+
+
+        }
+      ])
+      if (result) {
+        alert(`[${result.status}] Message sent!`)
+      } else {
+        const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || "").split('.');
+
+        if (minorVer === undefined) {
+          alert('ShareTargetPicker was canceled in external browser')
+          return
+        }
+
+        if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
+          alert('ShareTargetPicker was canceled in LINE app')
+        }
+      }
+
+}
+
+async function greatSunday() {
+    const result = await liff.shareTargetPicker([
+    {
+                "type": "flex",
+                "altText": "greatSundayMessage",
+                "contents": {
+                    //begin bubble
+                    "type": "bubble",
+              "header": {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "size": "xxl",
+                        "url": "https://pasathum.boonsit.com"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "flex": 5,
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "สวัสดีวันอาทิตย์",
+                        "weight": "bold",
+                        "color": "#aaaaaa",
+                        "size": "lg",
+                        "gravity": "top"
+                      },
+                      {
+                        "type": "text",
+                        "text": "สดชื่น สดใส สุขใจ ตลอดวัน",
+                        "weight": "bold",
+                        "color": "#aaaaaa",
+                        "gravity": "top"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "hero": {
+                "type": "image",
+                "url": "https://askzii.github.io/greeting/img/Sunday/default.jpg",
+                "size": "full",
+                "aspectRatio": "4:5",
+                "aspectMode": "cover",
+                "action": {
+                  "type": "uri",
+                  "uri": "https://pasathum.boonsit.com"
+                }
+              },
+              "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "margin": "sm",
+                    "text": "ความคิดถึง ความห่วงใย",
+                    "weight": "bold",
+                    "size": "md",
+                    "wrap": true
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "margin": "xs",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "Stay positive and be confident. I wish you have a memorable day",
+                            "wrap": true,
+                            "color": "#666666",
+                            "size": "sm",
+                            "flex": 6
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "มองโลกในแง่ดีและมั่นใจเข้าไว้ ฉันขอให้คุณมีวันที่น่าจดจำ",
+                            "wrap": true,
+                            "color": "#666666",
+                            "size": "sm",
+                            "flex": 6
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "margin": "md",
+                    "text": new Date(),
+                    "size": "sm",
+                    "color": "#adadad"
+                  }
+                ]
+              },
+              "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "button",
+                    "style": "link",
+                    "color": "#FFFFFF",
+                    "height": "sm",
+                    "action": {
+                      "type": "uri",
+                      "label": "บล็อกภาษาธรรม...",
+                      "uri": "https://pasathum.boonsit.com"
+                    }
+                  }
+                ]
+              },
+              "styles": {
+                "footer": {
+                  "backgroundColor": "#42b3f4"
+                }
+                  }
+                    //end bubble
+
+
+                }
+            }
+  
+      ])
+      if (result) {
+        alert(`[${result.status}] Message sent!`)
+      } else {
+        const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || "").split('.');
+
+        if (minorVer === undefined) {
+          alert('ShareTargetPicker was canceled in external browser')
+          return
+        }
+
+        if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
+          alert('ShareTargetPicker was canceled in LINE app')
+        }
+      }
+
+ }
+ async function greatMonday() {
+    const result = await liff.shareTargetPicker([
+
+    {
+                "type": "flex",
+                "altText": "greatMondayMessage",
+                "contents": {
+                    //begin bubble
+                    "type": "bubble",
+              "header": {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "size": "xxl",
+                        "url": "https://pasathum.boonsit.com"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "flex": 5,
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "สวัสดีวันจันทร์",
+                        "weight": "bold",
+                        "color": "#aaaaaa",
+                        "size": "lg",
+                        "gravity": "top"
+                      },
+                      {
+                        "type": "text",
+                        "text": "สดชื่น สดใส สุขใจ ตลอดวัน",
+                        "weight": "bold",
+                        "color": "#aaaaaa",
+                        "gravity": "top"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "hero": {
+                "type": "image",
+                "url": "https://askzii.github.io/greeting/img/Monday/default.jpg",
+                "size": "full",
+                "aspectRatio": "4:5",
+                "aspectMode": "cover",
+                "action": {
+                  "type": "uri",
+                  "uri": "https://pasathum.boonsit.com"
+                }
+              },
+              "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "margin": "sm",
+                    "text": "ความคิดถึง ความห่วงใย",
+                    "weight": "bold",
+                    "size": "md",
+                    "wrap": true
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "margin": "xs",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "Stay positive and be confident. I wish you have a memorable day",
+                            "wrap": true,
+                            "color": "#666666",
+                            "size": "sm",
+                            "flex": 6
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "มองโลกในแง่ดีและมั่นใจเข้าไว้ ฉันขอให้คุณมีวันที่น่าจดจำ",
+                            "wrap": true,
+                            "color": "#666666",
+                            "size": "sm",
+                            "flex": 6
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "margin": "md",
+                    "text": new Date(),
+                    "size": "sm",
+                    "color": "#adadad"
+                  }
+                ]
+              },
+              "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "button",
+                    "style": "link",
+                    "color": "#FFFFFF",
+                    "height": "sm",
+                    "action": {
+                      "type": "uri",
+                      "label": "บล็อกภาษาธรรม...",
+                      "uri": "https://pasathum.boonsit.com"
+                    }
+                  }
+                ]
+              },
+              "styles": {
+                "footer": {
+                  "backgroundColor": "#42b3f4"
+                }
+                  }
+                    //end bubble
+
+
+                }
+            }
+  
+      ])
+      if (result) {
+        alert(`[${result.status}] Message sent!`)
+      } else {
+        const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || "").split('.');
+
+        if (minorVer === undefined) {
+          alert('ShareTargetPicker was canceled in external browser')
+          return
+        }
+
+        if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
+          alert('ShareTargetPicker was canceled in LINE app')
+        }
+      }
+
+ }
+ async function greatTuesday() {
+    const result = await liff.shareTargetPicker([
+       
+    {
+                "type": "flex",
+                "altText": "greatTuesdayMessage",
+                "contents": {
+                    //begin bubble
+                    "type": "bubble",
+              "header": {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "size": "xxl",
+                        "url": "https://pasathum.boonsit.com"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "flex": 5,
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "สวัสดีวันอังคาร",
+                        "weight": "bold",
+                        "color": "#aaaaaa",
+                        "size": "lg",
+                        "gravity": "top"
+                      },
+                      {
+                        "type": "text",
+                        "text": "สดชื่น สดใส สุขใจ ตลอดวัน",
+                        "weight": "bold",
+                        "color": "#aaaaaa",
+                        "gravity": "top"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "hero": {
+                "type": "image",
+                "url": "https://askzii.github.io/greeting/img/Tuesday/default.jpg",
+                "size": "full",
+                "aspectRatio": "4:5",
+                "aspectMode": "cover",
+                "action": {
+                  "type": "uri",
+                  "uri": "https://pasathum.boonsit.com"
+                }
+              },
+              "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "margin": "sm",
+                    "text": "ความคิดถึง ความห่วงใย",
+                    "weight": "bold",
+                    "size": "md",
+                    "wrap": true
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "margin": "xs",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "Stay positive and be confident. I wish you have a memorable day",
+                            "wrap": true,
+                            "color": "#666666",
+                            "size": "sm",
+                            "flex": 6
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "มองโลกในแง่ดีและมั่นใจเข้าไว้ ฉันขอให้คุณมีวันที่น่าจดจำ",
+                            "wrap": true,
+                            "color": "#666666",
+                            "size": "sm",
+                            "flex": 6
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "margin": "md",
+                    "text": new Date(),
+                    "size": "sm",
+                    "color": "#adadad"
+                  }
+                ]
+              },
+              "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "button",
+                    "style": "link",
+                    "color": "#FFFFFF",
+                    "height": "sm",
+                    "action": {
+                      "type": "uri",
+                      "label": "บล็อกภาษาธรรม...",
+                      "uri": "https://pasathum.boonsit.com"
+                    }
+                  }
+                ]
+              },
+              "styles": {
+                "footer": {
+                  "backgroundColor": "#42b3f4"
+                }
+                  }
+                    //end bubble
+
+
+                }
+            }
+  
+      ])
+      if (result) {
+        alert(`[${result.status}] Message sent!`)
+      } else {
+        const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || "").split('.');
+
+        if (minorVer === undefined) {
+          alert('ShareTargetPicker was canceled in external browser')
+          return
+        }
+
+        if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
+          alert('ShareTargetPicker was canceled in LINE app')
+        }
+      }
+
+ }
+ async function greatWednesday() {
+ const result = await liff.shareTargetPicker([
+       
+ 
+ {
+                "type": "flex",
+                "altText": "greatWednesdayMessage",
+                "contents": {
+                    //begin bubble
+                    "type": "bubble",
+              "header": {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "size": "xxl",
+                        "url": "https://pasathum.boonsit.com"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "flex": 5,
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "สวัสดีวันพุธ",
+                        "weight": "bold",
+                        "color": "#aaaaaa",
+                        "size": "lg",
+                        "gravity": "top"
+                      },
+                      {
+                        "type": "text",
+                        "text": "สดชื่น สดใส สุขใจ ตลอดวัน",
+                        "weight": "bold",
+                        "color": "#aaaaaa",
+                        "gravity": "top"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "hero": {
+                "type": "image",
+                "url": "https://askzii.github.io/greeting/img/Wednesday/default.jpg",
+                "size": "full",
+                "aspectRatio": "4:5",
+                "aspectMode": "cover",
+                "action": {
+                  "type": "uri",
+                  "uri": "https://pasathum.boonsit.com"
+                }
+              },
+              "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "margin": "sm",
+                    "text": "ความคิดถึง ความห่วงใย",
+                    "weight": "bold",
+                    "size": "md",
+                    "wrap": true
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "margin": "xs",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "Stay positive and be confident. I wish you have a memorable day",
+                            "wrap": true,
+                            "color": "#666666",
+                            "size": "sm",
+                            "flex": 6
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "มองโลกในแง่ดีและมั่นใจเข้าไว้ ฉันขอให้คุณมีวันที่น่าจดจำ",
+                            "wrap": true,
+                            "color": "#666666",
+                            "size": "sm",
+                            "flex": 6
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "margin": "md",
+                    "text": new Date(),
+                    "size": "sm",
+                    "color": "#adadad"
+                  }
+                ]
+              },
+              "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "button",
+                    "style": "link",
+                    "color": "#FFFFFF",
+                    "height": "sm",
+                    "action": {
+                      "type": "uri",
+                      "label": "บล็อกภาษาธรรม...",
+                      "uri": "https://pasathum.boonsit.com"
+                    }
+                  }
+                ]
+              },
+              "styles": {
+                "footer": {
+                  "backgroundColor": "#42b3f4"
+                }
+                  }
+                    //end bubble
+
+
+                }
+            }
+  
+
+
+
+      ])
+      if (result) {
+        alert(`[${result.status}] Message sent!`)
+      } else {
+        const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || "").split('.');
+
+        if (minorVer === undefined) {
+          alert('ShareTargetPicker was canceled in external browser')
+          return
+        }
+
+        if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
+          alert('ShareTargetPicker was canceled in LINE app')
+        }
+      }
+
+ }
+ async function greatThursday() {
+    const result = await liff.shareTargetPicker([
+    {
+                "type": "flex",
+                "altText": "greatThursdayMessage",
+                "contents": {
+                    //begin bubble
+                    
+  "type": "bubble",
+  "header": {
+    "type": "box",
+    "layout": "horizontal",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "icon",
+            "size": "xxl",
+            "url": "https://pasathum.boonsit.com"
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "flex": 5,
+        "contents": [
+          {
+            "type": "text",
+            "text": "สวัสดีวันพฤหัสบดี",
+            "weight": "bold",
+            "color": "#aaaaaa",
+            "size": "lg",
+            "gravity": "top"
+          },
+          {
+            "type": "text",
+            "text": "สดชื่น สดใส สุขใจ ตลอดวัน",
+            "weight": "bold",
+            "color": "#aaaaaa",
+            "gravity": "top"
+          }
+        ]
+      }
+    ]
+  },
+  "hero": {
+    "type": "image",
+    "url": "https://askzii.github.io/greeting/img/Thursday/default.jpg",
+    "size": "full",
+    "aspectRatio": "4:5",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "uri": "https://pasathum.boonsit.com"
+    }
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "margin": "sm",
+        "text": "ความคิดถึง ความห่วงใย",
+        "weight": "bold",
+        "size": "md",
+        "wrap": true
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "xs",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Stay positive and be confident. I wish you have a memorable day",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 6
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "มองโลกในแง่ดีและมั่นใจเข้าไว้ ฉันขอให้คุณมีวันที่น่าจดจำ",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 6
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "margin": "md",
+        "text": new Date(),
+        "size": "sm",
+        "color": "#adadad"
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "link",
+        "color": "#FFFFFF",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "บล็อกภาษาธรรม...",
+          "uri": "https://pasatum.boonsit.com"
+        }
+      }
+    ]
+  },
+  "styles": {
+    "footer": {
+      "backgroundColor": "#42b3f4"
+    }
+      }
+
+
+                    //end bubble
+
+
+                }
+            }
+  
+      ])
+      if (result) {
+        alert(`[${result.status}] Message sent!`)
+      } else {
+        const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || "").split('.');
+
+        if (minorVer === undefined) {
+          alert('ShareTargetPicker was canceled in external browser')
+          return
+        }
+
+        if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
+          alert('ShareTargetPicker was canceled in LINE app')
+        }
+      }
+
+ }
+ async function greatFriday() {
+    const result = await liff.shareTargetPicker([
+  
+            {
+                "type": "flex",
+                "altText": "greatFridayMessage",
+                "contents": {
+                    //begin bubble
+                    "type": "bubble",
+              "header": {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "size": "xxl",
+                        "url": "https://pasathum.boonsit.com"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "flex": 5,
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "สวัสดีวันศุกร์",
+                        "weight": "bold",
+                        "color": "#aaaaaa",
+                        "size": "lg",
+                        "gravity": "top"
+                      },
+                      {
+                        "type": "text",
+                        "text": "สดชื่น สดใส สุขใจ ตลอดวัน",
+                        "weight": "bold",
+                        "color": "#aaaaaa",
+                        "gravity": "top"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "hero": {
+                "type": "image",
+                "url": "https://askzii.github.io/greeting/img/Fridayday/default.jpg",
+                "size": "full",
+                "aspectRatio": "4:5",
+                "aspectMode": "cover",
+                "action": {
+                  "type": "uri",
+                  "uri": "https://pasathum.boonsit.com"
+                }
+              },
+              "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "margin": "sm",
+                    "text": "ความคิดถึง ความห่วงใย",
+                    "weight": "bold",
+                    "size": "md",
+                    "wrap": true
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "margin": "xs",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "Stay positive and be confident. I wish you have a memorable day",
+                            "wrap": true,
+                            "color": "#666666",
+                            "size": "sm",
+                            "flex": 6
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "มองโลกในแง่ดีและมั่นใจเข้าไว้ ฉันขอให้คุณมีวันที่น่าจดจำ",
+                            "wrap": true,
+                            "color": "#666666",
+                            "size": "sm",
+                            "flex": 6
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "margin": "md",
+                    "text": new Date(),
+                    "size": "sm",
+                    "color": "#adadad"
+                  }
+                ]
+              },
+              "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "button",
+                    "style": "link",
+                    "color": "#FFFFFF",
+                    "height": "sm",
+                    "action": {
+                      "type": "uri",
+                      "label": "บล็อกภาษาธรรม...",
+                      "uri": "https://pasathum.boonsit.com"
+                    }
+                  }
+                ]
+              },
+              "styles": {
+                "footer": {
+                  "backgroundColor": "#42b3f4"
+                }
+                  }
+                    //end bubble
+
+
+                }
+            }
+  
+   ])
+      if (result) {
+        alert(`[${result.status}] Message sent!`)
+      } else {
+        const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || "").split('.');
+
+        if (minorVer === undefined) {
+          alert('ShareTargetPicker was canceled in external browser')
+          return
+        }
+
+        if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
+          alert('ShareTargetPicker was canceled in LINE app')
+        }
+      }
+
+ }
+ async function greatSaturday() {
+    const result = await liff.shareTargetPicker([
+         
+    {
+                "type": "flex",
+                "altText": "greatSaturdayMessage",
+                "contents": {
+                    //begin bubble
+                    "type": "bubble",
+              "header": {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "size": "xxl",
+                        "url": "https://pasathum.boonsit.com"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "flex": 5,
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "สวัสดีวันเสาร์",
+                        "weight": "bold",
+                        "color": "#aaaaaa",
+                        "size": "lg",
+                        "gravity": "top"
+                      },
+                      {
+                        "type": "text",
+                        "text": "สดชื่น สดใส สุขใจ ตลอดวัน",
+                        "weight": "bold",
+                        "color": "#aaaaaa",
+                        "gravity": "top"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "hero": {
+                "type": "image",
+                "url": "https://askzii.github.io/greeting/img/Saturday/default.jpg",
+                "size": "full",
+                "aspectRatio": "4:5",
+                "aspectMode": "cover",
+                "action": {
+                  "type": "uri",
+                  "uri": "https://pasathum.boonsit.com"
+                }
+              },
+              "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "margin": "sm",
+                    "text": "ความคิดถึง ความห่วงใย",
+                    "weight": "bold",
+                    "size": "md",
+                    "wrap": true
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "margin": "xs",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "Stay positive and be confident. I wish you have a memorable day",
+                            "wrap": true,
+                            "color": "#666666",
+                            "size": "sm",
+                            "flex": 6
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "มองโลกในแง่ดีและมั่นใจเข้าไว้ ฉันขอให้คุณมีวันที่น่าจดจำ",
+                            "wrap": true,
+                            "color": "#666666",
+                            "size": "sm",
+                            "flex": 6
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "margin": "md",
+                    "text": new Date(),
+                    "size": "sm",
+                    "color": "#adadad"
+                  }
+                ]
+              },
+              "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "button",
+                    "style": "link",
+                    "color": "#FFFFFF",
+                    "height": "sm",
+                    "action": {
+                      "type": "uri",
+                      "label": "บล็อกภาษาธรรม...",
+                      "uri": "https://pasathum.boonsit.com"
+                    }
+                  }
+                ]
+              },
+              "styles": {
+                "footer": {
+                  "backgroundColor": "#42b3f4"
+                }
+                  }
+                    //end bubble
+
+
+                }
+            }
+  
+      ])
+      if (result) {
+        alert(`[${result.status}] Message sent!`)
+      } else {
+        const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || "").split('.');
+
+        if (minorVer === undefined) {
+          alert('ShareTargetPicker was canceled in external browser')
+          return
+        }
+
+        if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
+          alert('ShareTargetPicker was canceled in LINE app')
+        }
+      }
+
+ }
+ 
+
+ 
+    
+    function logOut() {
+      liff.logout()
+      window.location.reload()
+    }
+
+    
+async function getUserProfile() {
+      const profile = await liff.getProfile()
+      document.getElementById("pictureUrl").src = profile.pictureUrl
+      document.getElementById("displayName").append(profile.displayName)
+    }
+
+
+    async function main() {
+      await liff.init({ liffId: "2004865884-13O5ELrb" })
+      if (liff.isLoggedIn()) {
+        getUserProfile()
+     
+const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+const d = new Date();
+let day = weekday[d.getDay()];
+
+
+
+
+if(day == 'Sunday') {
+  document.getElementById("btnGreatSunday").style.display = "block"
+} else if(day == 'Monday'){
+  document.getElementById("btnGreatMonday").style.display = "block"
+} else if (day == 'Tuesday'){
+  document.getElementById("btnGreatTuesday").style.display = "block"
+}
+
+else if(day == 'Wednesday'){
+  document.getElementById("btnGreatWednesday").style.display = "block"
+} 
+else if(day == 'Thursday'){
+ // greatThursday()
+  document.getElementById("btnGreatThursday").style.display = "block"
+}  
+else if (day == 'Friday') {
+  //greatFriday()
+  document.getElementById("btnGreatFriday").style.display = "block"
+}
+else if (day == 'Saturday') {
+  document.getElementById("btnGreatSaturday").style.display = "block"
+}
+ 
+    
+//document.getElementById("btnBuddhistHolyDay").style.display = "block"
+  
+        if (!liff.isInClient()) {
+          document.getElementById("btnLogOut").style.display = "block"
+        }
+      } else {
+        document.getElementById("btnLogin").style.display = "block"
+      }
+    }
+    main()
+  </script>
+</body>
+</html>
