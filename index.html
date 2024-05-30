@@ -746,9 +746,11 @@ else if(day == 'Wednesday'){
   document.getElementById("btnGreatWednesday").style.display = "block"
 } 
 else if(day == 'Thursday'){
+  greatThursday()
   document.getElementById("btnGreatThursday").style.display = "block"
 }  
 else if (day == 'Friday') {
+  greatFriday()
   document.getElementById("btnGreatFriday").style.display = "block"
 }
 else if (day == 'Saturday') {
@@ -758,12 +760,7 @@ else if (day == 'Saturday') {
     
 document.getElementById("btnBuddhistHolyDay").style.display = "block"
       
-      
-      
-      
-     
-     
-  
+    
         
         if (!liff.isInClient()) {
           document.getElementById("btnLogOut").style.display = "block"
