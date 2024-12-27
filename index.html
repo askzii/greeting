@@ -65,6 +65,7 @@ button {
 
     <img id="pictureUrl">
     <p id="displayName"><b>สวัสดีคุณ :</b> </p>
+    <p id="displayUserId"></p>
 <!--
   <button id="btnBuddhistHolyDay" onclick="buddhistHolyDay()"> สวัสดีวันพระ</button>
 -->
@@ -1273,6 +1274,8 @@ async function getUserProfile() {
       const profile = await liff.getProfile()
       document.getElementById("pictureUrl").src = profile.pictureUrl
       document.getElementById("displayName").append(profile.displayName)
+      document.getElementById("displayUserId").append(profile.displayUserId)
+  
     }
 
 
